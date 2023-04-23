@@ -1,0 +1,181 @@
+Master and slave architecture in Jenkins
+
+
+
+
+
+
+Create a linux slave and dispatch job from master to slave
+
+Create a new EC2 instance with OS as Amazon linux 2
+Provide the security group rule 2 also.
+
+Connect to the instance and install following tools:
+
+Execute command to become root
+
+sudo su -
+
+Java:
+
+sudo amazon-linux-extras install java-openjdk11 -y
+
+GIT:
+
+yum install git -y
+
+            Create a root directory
+This directory will be used exclusively my Jenkisn master to place remote files and create job workspace
+You need to create a directory and give read/write/execute access to it
+
+Execute:
+
+$ cd /tmp
+$ mkdir jenkinsdir
+
+The path of root directory will be /tmp/jenkinsdir
+
+give read/write/execute access to the root directory
+
+$ chmod -R 777 /tmp/jenkinsdir
+
+**********************************************
+
+Setup on Jenkins master:
+
+Go to manage jenkins → Configure system → Scroll down to jenkins location and change the Jenkisn URL to be the latest URL
+
+http://3.147.195.251:8080/
+
+Save the page
+
+
+2. Manage jenkins → configure global security→ scroll down → Agents → select Random radio button
+
+Save the page
+
+
+Manage Jenkins – Manage nodes and Clouds
+
+Click on + New node
+
+Give node name: slave1
+
+Select Permanent Agent
+
+Click on create
+
+Now give description : anything text
+
+Number of executors: 1
+
+Remote root directory: /tmp/jenkinsdir
+
+
+Labels : slave1
+
+Usage : select second option from dropdown
+
+Launch method: launch agents via ssh
+
+Host : private ip address of slave machine
+Add credentials.
+
+Scroll down to Node properties
+Select tool location:
+
+Click on ADD
+
+Now go to slave server and execute command
+
+$ which git
+
+Path of git will be 
+
+/usr/bin/git
+
+
+Now add Java
+
+
+On slave execute :  alternatives --config java
+
+Give number of version 11 java
+
+Copy the path of verison 11
+
+
+Go to jenkins and paste the path
+
+
+
+Go to the pipeline job and add the agent section:
+
+
+// it is a comment
+pipeline{
+ tools{
+        // mymaven is coming from global tool configuration
+        maven 'mymaven'
+    }
+ // ** which server/agent should this pipeline tasks be executed **
+ agent {label 'linux_slave'}
+ 
+ parameters {
+ string(name: 'gitrepo', defaultValue: 'https://github.com/Sonal0409/DevOpsCodeDemo.git', description: 'enter the giturl')
+ }
+ 
+ stages {
+     
+     // stage is nothing but a job/task
+     
+     stage('1.CloneRepo')
+     {
+         steps{
+           
+           git "${params.gitrepo}"
+         }
+     }
+     
+     stage('2.CompileCode')
+     {
+         steps{
+             // give the maven GOAL to compile: mvn compile
+             
+             sh 'mvn compile'
+         }
+     }
+     
+     stage('3.Codereview')
+     {
+         steps{
+             
+                 
+             sh 'mvn pmd:pmd'
+             
+          
+            
+         }
+     }
+     
+     stage('4.UnitTest')
+     {
+         steps{
+             sh 'mvn test'
+         }
+        post{
+            success{
+               junit 'target/surefire-reports/*.xml' 
+            }
+        }
+     }
+     
+     stage('5.Package')
+     {
+         steps{
+             sh 'mvn package'
+         }
+     }
+ }
+    
+}
