@@ -1,6 +1,12 @@
 Date : 07-May-2023
 Agenda of the class:
 ====================================
+Continue with discussion on terraform project
+  > create key pair in AWS
+  > add it to aws_instace resource
+  > create security groups using terraform resource
+  > associate it with aws_instance resource in terraform.
+  > execute sample terraform project.
 1. What is containerization, Introdcution to Docker tool.
 2. Docker architecture.
 3. Docker Images and pull docker image
