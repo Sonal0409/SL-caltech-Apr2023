@@ -12,18 +12,19 @@ Continue with discussion on terraform project
 3. Docker Images and pull docker image
 4. Docker run command and its options
 5. Docker lifecycle, how o start , stop and kill a container
-6. Access the container using docker exec command
-7. Access a container via your browser. Port mapping
-8. Docker volumes and its examples
+
 
 Date: 13-May-2023
 Agenda of the class:
 ====================================
-1. Docker file creation
-2. Push dockerfile to Docker Hub
-3. Docker networking -> Create a custom Bridge network
-4. Docker compose tool and write docker compose file using YAML
-5. Introduction to Container orchestration and its features
+1. Access the container using docker exec command
+2. Access a container via your browser. Port mapping
+3. Docker volumes and its examples
+4. Docker file creation
+5. Push dockerfile to Docker Hub
+6. Docker networking -> Create a custom Bridge network
+7. Docker compose tool and write docker compose file using YAML
+8. Introduction to Container orchestration and its features
 
 
 Date 14-may-2023
