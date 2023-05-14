@@ -19,25 +19,26 @@ Agenda of the class:
 ====================================
 1. Access the container using docker exec command
 2. Access a container via your browser. Port mapping
-3. Docker volumes and its examples
 4. Docker file creation
 5. Push dockerfile to Docker Hub
-6. Docker networking -> Create a custom Bridge network
-7. Docker compose tool and write docker compose file using YAML
-8. Introduction to Container orchestration and its features
+
 
 
 Date 14-may-2023
 Agenda of the class:
 ==========================================
-1. Introdcution to Kubernetes Container orchestration tool
-2. Kubernetes Architecture
-3. Creation of pod  using po-defination file using YAML
-4. Creation of multi-containaer POD in kubernetes
+1. Docker networking -> Create a custom Bridge network
+2. Docker compose tool and write docker compose file using YAML
+3. Introduction to Container orchestration and its features
+4. Introdcution to Kubernetes Container orchestration tool
+5. Kubernetes Architecture
+
 
 Date 20-may-2023
 Agenda of the class:
 =============================================
+6. Creation of pod  using po-defination file using YAML
+7. Creation of multi-containaer POD in kubernetes
 1. Introduction to Continous Monitoring
 2. Introdcution to Nagios monitoring tool
 3. Install nagios monitoring tool and monitor services using nagios
