@@ -37,8 +37,13 @@ Agenda of the class:
 Date 20-may-2023
 Agenda of the class:
 =============================================
-6. Creation of pod  using po-defination file using YAML
-7. Creation of multi-containaer POD in kubernetes
+1. Installation of Kubernetes
+2. Creation of pod  using po-defination file using YAML
+3. Creation of multi-containaer POD in kubernetes
+
+Date 21-May-2023
+Agenda:
+======================
 1. Introduction to Continous Monitoring
 2. Introdcution to Nagios monitoring tool
 3. Install nagios monitoring tool and monitor services using nagios
