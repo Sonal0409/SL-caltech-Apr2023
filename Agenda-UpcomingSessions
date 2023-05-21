@@ -49,7 +49,8 @@ Agenda:
 3. Install nagios monitoring tool and monitor services using nagios
 4. Introduction to ELK tool
 5. Install ELK tool using docker-compose tool
-6. Create a dockerpipleine to deploy and application and monitor using ELK tool.
+6. Create a dockercontainer to deploy an application and monitor using ELK tool.
+7. Discuss and mentor on Devops CICD project 2
 
 ================================================
 
